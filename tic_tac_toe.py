@@ -38,16 +38,23 @@ class Board:
         return None
 
     def is_winner(self, player):
-        """Returns True if the player won and False otherwise."""
-        if (self.board["TL"] == player.type and self.board["TM"] == player.type and self.board["TR"] == player.type or
-            self.board["ML"] == player.type and self.board["MM"] == player.type and self.board["MR"] == player.type or
-            self.board["BL"] == player.type and self.board["BM"] == player.type and self.board["BR"] == player.type or
-            self.board["TL"] == player.type and self.board["ML"] == player.type and self.board["BL"] == player.type or
-            self.board["TM"] == player.type and self.board["MM"] == player.type and self.board["BM"] == player.type or
-            self.board["TR"] == player.type and self.board["MR"] == player.type and self.board["BR"] == player.type or
-            self.board["TL"] == player.type and self.board["MM"] == player.type and self.board["BR"] == player.type or
-            self.board["BL"] == player.type and self.board["MM"] == player.type and self.board["TR"] == player.type):
-            return True
+        player_type = player.type
+        runs = [
+            # horizontal
+            ["TL", "TM", "TR"],
+            ["ML", "MM", "MR"],
+            ["BL", "BM", "BR"],
+            # vertical
+            ["TL", "ML", "BL"],
+            ["TM", "MM", "BM"],
+            ["TR", "MR", "BR"],
+            # diagonal
+            ["TL", "MM", "BR"],
+            ["BL", "MM", "TR"]
+            ]
+        for a, b, c in runs:
+            if self.board[a] == self.board[b] == self.board[c] == player_type:
+                return True
         return False
 
 
