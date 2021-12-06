@@ -66,3 +66,19 @@ def test_vertical_not_win_for_player_X(player):
     board.change_board("BL", "X")
 
     assert board.is_winner(player) == False
+
+def test_diagonal_win_for_player_X(player):
+    board = Board()
+    board.change_board("TL", "X")
+    board.change_board("MM", "X")
+    board.change_board("BR", "X")
+
+    assert board.is_winner(player) == True
+
+def test_diagonal_not_win_for_player_X(player):
+    board = Board()
+    board.change_board("TL", "X")
+    board.change_board("MM", "O")
+    board.change_board("BR", "X")
+
+    assert board.is_winner(player) == False
