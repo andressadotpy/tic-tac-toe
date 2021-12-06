@@ -9,7 +9,8 @@ class Board:
         self.board = {
                 "TL": " ", "TM": " ", "TR": " ",
                 "ML": " ", "MM": " ", "MR": " ",
-                "BL": " ", "BM": " ", "BR": " "}
+                "BL": " ", "BM": " ", "BR": " "
+        }
 
     def print_board(self):
         print(self.board["TL"] + "|" + self.board["TM"] \
