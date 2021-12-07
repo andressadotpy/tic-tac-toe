@@ -6,24 +6,32 @@ class Board:
         and the value can be 'X', 'O' or ' ' (representing an empty position
         in the board.)
         """
-        self.board = {
+        self._board = {
                 "TL": " ", "TM": " ", "TR": " ",
                 "ML": " ", "MM": " ", "MR": " ",
                 "BL": " ", "BM": " ", "BR": " "
         }
 
+    @property
+    def board(self):
+        return self._board
+    
+    @board.setter
+    def board(self, board):
+        self._board = board
+
     def print_board(self):
-        print(self.board["TL"] + "|" + self.board["TM"] \
-            + "|" + self.board["TR"] + "|")
+        print(self._board["TL"] + "|" + self._board["TM"] \
+            + "|" + self._board["TR"] + "|")
         print("-+" * 3)
-        print(self.board["ML"] + "|" + self.board["MM"] \
-            + "|" + self.board["MR"] + "|")
+        print(self._board["ML"] + "|" + self._board["MM"] \
+            + "|" + self._board["MR"] + "|")
         print("-+" * 3)
-        print(self.board["BL"] + "|" + self.board["BM"] \
-            + "|" + self.board["BR"] + "|")
+        print(self._board["BL"] + "|" + self._board["BM"] \
+            + "|" + self._board["BR"] + "|")
 
     def _is_valid_move(self, position):
-        if self.board[position] == " ":
+        if self._board[position] == " ":
             return True
         return False
 
@@ -33,8 +41,8 @@ class Board:
         Returns None if the move is not valid.
         """
         if self._is_valid_move(position):
-            self.board[position] = type
-            return self.board
+            self._board[position] = type
+            return self._board
         return None
 
     def is_winner(self, player):
@@ -53,6 +61,6 @@ class Board:
             ["BL", "MM", "TR"]
             ]
         for a, b, c in runs:
-            if self.board[a] == self.board[b] == self.board[c] == player_type:
+            if self._board[a] == self._board[b] == self._board[c] == player_type:
                 return True
         return False
