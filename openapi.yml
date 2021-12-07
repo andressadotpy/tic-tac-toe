@@ -1,0 +1,15 @@
+openapi: 3.0.3
+info:
+  title: Tic-Tac-Toe
+  version: 0.1.0
+paths:
+  /evaluate:
+    post:
+      operationId: api.evaluate.post
+      summary: Evaluates a move
+      tags: [Environment]
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
