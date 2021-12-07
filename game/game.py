@@ -2,11 +2,9 @@ from .board import Board
 from .player import Player
 
 class Game:
-    """Represents a Tic-Tac-Toe game.
-    The game defines player 1 always playing with 'X'.
-    """
     def __init__(self):
-        """Initilize 2 Players and one Board."""
+        """Initilize 2 Players and one Board.
+        Player one is always X."""
         self.player1 = Player("X")
         self.player2 = Player("O")
         self.board = Board()
@@ -26,16 +24,12 @@ class Game:
         return self.player1
 
     def change_turn(self, player):
-        """Changes the player turn.
-        Receives a player and returns the other.
-        """
         if player is self.player1:
             return self.player2
         else:
             return self.player1
 
     def won_game(self, player):
-        """Returns True if the player won the game, False otherwise."""
         return self.board.is_winner(player)
 
     def modify_board(self, position, player):
