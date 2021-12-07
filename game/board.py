@@ -23,7 +23,7 @@ class Board:
             + "|" + self.board["BR"] + "|")
 
     def _is_valid_move(self, position):
-        if self.board[position] is " ":
+        if self.board[position] == " ":
             return True
         return False
 
