@@ -1,6 +1,6 @@
 class Player:
 
-    def __init__(self, type):
+    def __init__(self, type: str):
         """Initializes a player with type 'X' or 'O'."""
         self.type = type
 

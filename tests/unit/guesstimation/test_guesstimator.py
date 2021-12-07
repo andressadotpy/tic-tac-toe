@@ -7,9 +7,9 @@ def test_guesstimator_structure():
         "ML": " ", "MM": " ", "MR": " ",
         "BL": " ", "BM": " ", "BR": " ",
     }
-    guesstimator = Guesstimator(board)
+    guesstimator = Guesstimator()
 
-    assert guesstimator.estimate() == None
+    assert guesstimator.estimate(board) == ["TL", "TR", "BL", "BR"]
 
 def test_counting_number_of_turns_each_player_already_played():
     board = {
@@ -17,6 +17,6 @@ def test_counting_number_of_turns_each_player_already_played():
         "ML": " ", "MM": " ", "MR": " ",
         "BL": " ", "BM": " ", "BR": " ",
     }
-    guesstimator = Guesstimator(board)
+    guesstimator = Guesstimator()
 
-    assert guesstimator.number_of_turns_by_player() == (2, 1)
+    assert guesstimator.number_of_turns_by_player(board) == (2, 1)

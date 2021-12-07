@@ -23,16 +23,16 @@ class Game:
     def get_player1(self):
         return self.player1
 
-    def change_turn(self, player):
+    def change_turn(self, player: Player):
         if player is self.player1:
             return self.player2
         else:
             return self.player1
 
-    def won_game(self, player):
+    def won_game(self, player: Player):
         return self.board.is_winner(player)
 
-    def modify_board(self, position, player):
+    def modify_board(self, position: str, player: Player) -> dict[str, str]:
         """Receives position and player type ('X' or 'O').
         Returns modified board if position was valid.
         Asks to player try a different position otherwise.

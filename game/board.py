@@ -1,3 +1,6 @@
+from typing import Union
+from .player import Player
+
 class Board:
 
     def __init__(self):
@@ -30,12 +33,12 @@ class Board:
         print(self._board["BL"] + "|" + self._board["BM"] \
             + "|" + self._board["BR"] + "|")
 
-    def _is_valid_move(self, position):
+    def _is_valid_move(self, position: str) -> bool:
         if self._board[position] == " ":
             return True
         return False
 
-    def change_board(self, position, type):
+    def change_board(self, position: str, type: str) -> Union[dict[str, str], None]:
         """Receive a position and if the player is 'X' or 'O'.
         Checks if the position is valid, modifies the board and returns the modified board.
         Returns None if the move is not valid.
@@ -45,7 +48,7 @@ class Board:
             return self._board
         return None
 
-    def is_winner(self, player):
+    def is_winner(self, player: Player) -> bool:
         player_type = player.type
         runs = [
             # horizontal
